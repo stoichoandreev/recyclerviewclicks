@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RecyclerView CDemo</string>
+
+    <string name="title_pattern">Product %1\$s</string>
+    <string name="description_pattern">Product Description %1$s</string>
+    <string name="backup">Backup</string>
+    <string name="block">Block</string>
+</resources>

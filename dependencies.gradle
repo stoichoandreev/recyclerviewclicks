@@ -1,0 +1,63 @@
+ext {
+    compileSdkVersion = 26
+    minSdkVersion = 21
+    targetSdkVersion = 26
+    buildToolsVersion  = '26.0.2'
+    applicationId = "com.sniper.rcdemo"
+}
+ext {
+    jUnitVersion = '4.12'
+    jUnitRunnerVersion = '0.5'
+    espressoVersion = '2.2.2'
+
+    supportVersion = '26.0.1'
+}
+ext {
+    libraries = [
+            kotlinStdlib            : "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.ext.kotlin_plugin_version",
+            supportAppcompat_v7     : "com.android.support:appcompat-v7:$supportVersion",
+            supportDesign           : "com.android.support:design:$supportVersion",
+            supportAnnotations      : "com.android.support:support-annotations:$supportVersion"
+    ]
+
+    librariesTest = [
+            JUnit                   : "junit:junit:$jUnitVersion",
+
+            supportEspressoCore     : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            supportEspressoIntents  : "com.android.support.test.espresso:espresso-intents:${espressoVersion}",
+            supportTestRules        : "com.android.support.test:rules:$jUnitRunnerVersion",
+            supportTestRunner       : "com.android.support.test:runner:$jUnitRunnerVersion"
+    ]
+}
+
+ext.commonTestDependencies = { dependencies ->
+    dependencies.testCompile librariesTest.JUnit
+    dependencies.testCompile (librariesTest.supportTestRunner) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    dependencies.testCompile (librariesTest.supportTestRules) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+}
+
+ext.commonAndroidTestDependencies = { dependencies ->
+
+    dependencies.androidTestCompile(librariesTest.supportEspressoCore) {
+        exclude module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs'
+    }
+    dependencies.androidTestCompile(librariesTest.supportEspressoIntents) {
+        exclude module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.google.code.findbugs'
+    }
+
+    dependencies.androidTestCompile(librariesTest.supportTestRunner) {
+        exclude module: 'support-annotations'
+    }
+
+    dependencies.androidTestCompile(librariesTest.supportTestRules) {
+        exclude module: 'support-annotations'
+    }
+}
