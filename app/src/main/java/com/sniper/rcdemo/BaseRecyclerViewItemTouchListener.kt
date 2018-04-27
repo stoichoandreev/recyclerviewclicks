@@ -24,7 +24,7 @@ abstract class BaseRecyclerViewItemTouchListener<out T : BaseRecyclerViewItemTou
 
             override fun onLongPress(event: MotionEvent) {
                 with(recycleView) {
-                    val child: View? = findChildViewUnder(event.rawX, event.rawY)
+                    val child: View? = findChildViewUnder(event.x, event.y)
                     child?.let { mClickListener.onLongClick(child, getChildAdapterPosition(child)) }
                 }
             }
