@@ -1,5 +1,6 @@
 package com.sniper.rcdemo
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
@@ -49,9 +50,14 @@ class MainActivity : AppCompatActivity() {
 
                     override fun onLongClick(view: View, position: Int) {
                         Toast.makeText(view.context, "Long click action on position = " + position, Toast.LENGTH_LONG).show()
+                        openCardViewScreen()
                     }
                 })
         )
+    }
+
+    private fun openCardViewScreen() {
+        startActivity(Intent(this, CardViewActivity::class.java))
     }
 
     @NotNull

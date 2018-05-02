@@ -28,6 +28,7 @@ dependencies {
     implementation rootProject.ext.libraries.kotlinStdlib
     implementation rootProject.ext.libraries.supportAppcompat_v7
     implementation rootProject.ext.libraries.supportDesign
+    implementation rootProject.ext.libraries.supportCardView
 
     commonTestDependencies(it)
     commonAndroidTestDependencies(it)

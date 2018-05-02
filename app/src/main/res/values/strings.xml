@@ -5,4 +5,7 @@
     <string name="description_pattern">Product Description %1$s</string>
     <string name="backup">Backup</string>
     <string name="block">Block</string>
+    <string name="click_me">Click Me</string>
+    <string name="card_view_title_pattern">CardView Title %1\$s</string>
+    <string name="card_view_description_pattern">CardView Description %1$s</string>
 </resources>
